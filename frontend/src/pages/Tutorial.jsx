@@ -61,16 +61,17 @@ function Tutorial() {
             });
     };
  
-    const deleteTutorial = () => {
-        TutorialService.remove(currentTutorial.id)
-            .then((response) => {
-                console.log(response.data);
-                navigate("/tutorials");
-            })
-            .catch((e) => {
-                console.log(e);
-            });
-    };
+   const deleteTutorial = () => {
+    TutorialService.remove(currentTutorial.id)
+        .then((response) => {
+            console.log(response.data);
+            navigate("/tutorials", { replace: true });
+            window.location.reload(); // refresh the list
+        })
+        .catch((e) => {
+            console.log(e);
+        });
+};
  
     return (
         

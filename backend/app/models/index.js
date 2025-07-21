@@ -1,12 +1,13 @@
-import dbConfig from "../config/db.config.js";
 import mongoose from "mongoose";
-import Tutorial from "./tutorial.model.js";
- 
+import tutorialModel from "./tutorial.model.js";
 mongoose.Promise = global.Promise;
- 
+
 const db = {};
 db.mongoose = mongoose;
-db.url = `mongodb://${dbConfig.HOST}:${dbConfig.PORT}/${dbConfig.DB}`;
-db.tutorials = Tutorial(mongoose);
- 
+
+// Get the connection string from .env
+db.url = process.env.MONGO_URI;
+
+db.tutorials = tutorialModel;
+
 export default db;

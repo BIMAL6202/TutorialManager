@@ -25,7 +25,7 @@ function AddTutorial() {
     };
  
     return (
-        <div className="max-w-sm mx-auto p-4 bg-black text-white rounded shadow">
+        <div className="max-w-sm mx-auto p-4 bg-white text-black rounded shadow">
             {submitted ? (
                 <div>
                     <h4 className="font-bold text-green-600 mb-4">

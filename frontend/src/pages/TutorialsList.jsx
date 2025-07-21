@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import TutorialService from "../services/tutorial.service";
+import TutorialService from "../services/tutorial.service.js";
 import { Link } from "react-router-dom";
  
 function TutorialsList() {
@@ -63,7 +63,7 @@ function TutorialsList() {
     };
  
     return (
-        <div className="flex flex-col lg:flex-row gap-8 text-white">
+        <div className="flex flex-col lg:flex-row gap-8 text-black">
             {/* LEFT COLUMN: SEARCH + LIST */}
             <div className="flex-1">
                 <div className="flex mb-4">
@@ -75,7 +75,7 @@ function TutorialsList() {
                         onChange={onChangeSearchTitle}
                     />
                     <button
-                        className="bg-blue-500 text-white px-4 py-1 rounded-r"
+                        className="bg-blue-500 text-black px-4 py-1 rounded-r"
                         onClick={findByTitle}
                     >
                         Search
@@ -110,7 +110,7 @@ function TutorialsList() {
             {/* RIGHT COLUMN: DETAILS */}
             <div className="flex-1">
                 {currentTutorial ? (
-                    <div className="p-4 bg-black rounded shadow">
+                    <div className="p-4 bg-white rounded shadow">
                         <h4 className="font-bold text-xl mb-2">Tutorial</h4>
                         <div className="mb-2">
                             <strong>Title: </strong>

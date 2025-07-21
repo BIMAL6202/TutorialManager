@@ -1,6 +1,7 @@
-import db from "../models/index.js";
- 
-const Tutorial = db.tutorials;
+import mongoose from "mongoose";
+import getTutorialModel from "../models/tutorial.model.js";
+
+const Tutorial = getTutorialModel(mongoose);
  
 // Create and Save a new Tutorial
 export const create = (req, res) => {
@@ -90,11 +91,16 @@ export const update = (req, res) => {
 };
  
 // Delete a Tutorial by ID
+// Delete a Tutorial by ID
 export const deleteOne = (req, res) => {
     const id = req.params.id;
- 
-    // Delete the Tutorial with the specified ID
-    Tutorial.findByIdAndRemove(id)
+
+    // Check if the ID is a valid MongoDB ObjectId
+    if (!id || id.length !== 24) {
+        return res.status(400).send({ message: "Invalid ID format." });
+    }
+
+    Tutorial.findByIdAndDelete(id)
         .then((data) => {
             if (!data) {
                 res.status(404).send({
@@ -107,12 +113,13 @@ export const deleteOne = (req, res) => {
             }
         })
         .catch((err) => {
+            console.error("❌ Error in deleteOne:", err); // Add this
             res.status(500).send({
                 message: "Could not delete Tutorial with id=" + id,
             });
         });
 };
- 
+
 // Delete all Tutorials
 export const deleteAll = (req, res) => {
     // Delete all Tutorials
