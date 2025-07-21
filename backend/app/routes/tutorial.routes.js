@@ -1,4 +1,4 @@
-import * as tutorials from "../controllers/tutorial.controller";
+import * as tutorials from "../controllers/tutorial.controller.js";
 import express from "express";
  
 export default (app) => {
