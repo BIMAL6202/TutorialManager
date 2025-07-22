@@ -9,7 +9,10 @@ dotenv.config();
 const app = express();
 
 const corsOptions = {
-    origin: ["http://localhost:5173","https://tutorial-manager-eta.vercel.app/"]// for local React
+  origin: [
+    "http://localhost:5173",
+    "https://tutorial-manager-eta.vercel.app", // ❌ no trailing slash
+  ],
 };
 
 app.use(cors(corsOptions));
